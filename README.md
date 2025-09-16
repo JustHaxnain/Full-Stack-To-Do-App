@@ -181,7 +181,7 @@ npm run dev
 
 ## 📸 Screenshot
 
-![To Do App](/client/public/toDoAppCloseUp.png "To Do App Screenshot")
+![To Do App](/client/public/toDoAppCLoseUp.png "To Do App Screenshot")
 
 ---
 
@@ -192,3 +192,4 @@ MIT
 ---
 
 **✨ In short, this is not just a simple Todo list — it's a full CRUD app with clean architecture, modern React hooks, Express REST API, and robust SQL schema design. Built with developer experience and scalability in mind.**
+
