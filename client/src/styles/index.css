@@ -1,0 +1,353 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body,
+html {
+    width: 100%;
+    height: 100%;
+    background-color: #0f0f0f;
+}
+
+button:disabled {
+    opacity: 0.75;
+    cursor: not-allowed;
+}
+
+.allTask {
+    width: 100%;
+    height: 100%;
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.allTaskContainer {
+    background-color: #f4f5f7;
+    max-width: 800px;
+    width: 100%;
+    padding: 36px 40px;
+    border-radius: 14px;
+    margin: 0 15px;
+    box-shadow: 0 4px 24px rgba(44, 62, 80, 0.07);
+    font-family: "Inter", "Poppins", Arial, sans-serif;
+}
+
+.inputContainer {
+    position: relative;
+    display: flex;
+    width: 100%;
+    margin: 24px 0 28px 0; /* slightly smaller vertical spacing */
+    align-items: center;
+    gap: 0;
+}
+
+.taskInput {
+    flex: 1;
+    padding: 10px 38px 10px 14px; /* smaller padding, still room for button */
+    border: 2px solid #b7c6d9;
+    border-radius: 8px;
+    background: #f4f6fa;
+    font-size: 1rem;
+    font-family: "Inter", "Poppins", Arial, sans-serif;
+    font-weight: 500;
+    color: #23272f;
+    outline: none;
+    transition: border 0.2s, background 0.2s;
+    box-shadow: 0 1px 3px rgba(44, 62, 80, 0.03);
+    height: 42px;
+}
+
+.taskInput:focus {
+    border-color: #555;
+    background: #f9fbfd;
+}
+
+.taskInput::placeholder {
+    color: #a0aec0;
+    font-size: 1rem;
+    font-weight: 400;
+    letter-spacing: 0.01em;
+}
+
+.addButton {
+    position: absolute;
+    right: 6px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 30px;
+    height: 30px;
+    border: none;
+    border-radius: 6px;
+    background: linear-gradient(90deg, #23272f 60%, #353b48 100%);
+    color: #fff;
+    font-size: 1em;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 8px rgba(44, 62, 80, 0.13);
+    cursor: pointer;
+    transition: background 0.18s, transform 0.13s, box-shadow 0.18s;
+    padding: 0;
+    z-index: 2;
+}
+
+.addButton:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.addButton:hover:not(:disabled) {
+    background: linear-gradient(90deg, #181b20 60%, #23272f 100%);
+    transform: translateY(-50%) scale(1.04);
+    box-shadow: 0 4px 16px rgba(44, 62, 80, 0.18);
+}
+
+.addButton i.fa-plus {
+    font-size: 1em;
+    font-weight: 600;
+    margin: 0;
+    transition: transform 0.25s cubic-bezier(0.4, 2, 0.6, 1);
+}
+
+.addButton:hover i.fa-plus {
+    transform: rotate(30deg);
+}
+
+.loadingText {
+    text-align: center;
+    font-size: 20px;
+}
+
+.taskList {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    list-style-position: inside;
+}
+
+.taskItem {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    font-family: "Poppins", sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+    cursor: pointer;
+    gap: 20px;
+    padding: 15px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.taskItem:hover {
+    background-color: #ececf0; /* soft blue-gray hover */
+    box-shadow: 0 2px 8px rgba(44, 62, 80, 0.08);
+}
+
+.taskItemP {
+    max-width: 1100px;
+    width: 100%;
+    word-wrap: break-word;
+}
+
+.taskItemP::before {
+    content: "• ";
+    font-weight: bold;
+    display: inline-block;
+    width: 1em;
+}
+
+.taskLength {
+    text-align: center;
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.taskButtons {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.appHeading {
+    text-align: center;
+    font-size: 2.3rem;
+    font-weight: 800;
+    color: #1a2233; /* dark, professional */
+    margin-bottom: 22px;
+    letter-spacing: 0.03em;
+    font-family: "Inter", "Poppins", Arial, sans-serif;
+    text-shadow: 0 2px 8px rgba(44, 62, 80, 0.1);
+}
+.taskButtonContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 5px;
+    width: 100%;
+    max-width: 225px;
+}
+
+.strikeThrough {
+    text-decoration: line-through;
+    text-decoration-color: #ff4d4d;
+    text-decoration-thickness: 2px;
+    color: #555;
+}
+
+.taskDate {
+    text-align: right;
+    font-size: 11px;
+    color: #555;
+    font-weight: 600;
+    margin-top: 5px;
+}
+
+.deleteButton {
+    background-color: #ff4d4d;
+    border: none;
+    color: white;
+    width: 30px;
+    height: 26px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+}
+.deleteButton:hover {
+    background-color: #ff1a1a;
+}
+.taskCheckBox {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    width: 30px;
+    height: 26px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.editButton {
+    background-color: #4da6ff;
+    border: none;
+    color: white;
+    width: 30px;
+    height: 26px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+}
+
+.editButton:hover {
+    background-color: #1a8cff;
+}
+
+.saveButton {
+    background-color: #55ea96;
+    border: none;
+    color: white;
+    width: 30px;
+    height: 26px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+}
+
+.saveButton:hover {
+    background-color: #32d37e;
+}
+
+.taskEditForm {
+    width: 100%;
+}
+
+.taskEditInput {
+    padding: 8px 8px 8px 12px;
+    border: 2px solid #888;
+    border-radius: 8px;
+    width: 100%;
+    outline: none;
+    font-size: 15px;
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+}
+
+.taskEditInput::placeholder {
+    font-size: 14px;
+}
+
+Input:focus {
+    border-color: #555;
+}
+
+/* ✅ Completed state */
+.taskCheckBox.completed {
+    background-color: #55ea96;
+}
+.taskCheckBox.completed .fa-check {
+    color: #fff;
+}
+
+/* ❌ Incomplete state */
+.taskCheckBox.incomplete {
+    background-color: #ff4d4d;
+}
+.taskCheckBox.incomplete .fa-close {
+    color: #fff;
+}
+
+.taskCheckBox:hover {
+    opacity: 0.8;
+}
+
+.taskCheckBox .fa-check {
+    color: #fff;
+    font-size: 16px;
+}
+
+.taskCheckBox .fa-close {
+    color: #fff;
+    font-size: 16px;
+}
+
+.noTask {
+    text-align: center;
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.noTask::before {
+    content: "⚠️ ";
+}
+@media (max-width: 600px) {
+    .allTaskContainer {
+        padding: 10px;
+        min-width: 0;
+        max-width: 100vw;
+    }
+    .inputContainer {
+        margin: 14px 0 18px 0;
+    }
+    .taskInput {
+        font-size: 0.95rem;
+        padding: 8px 34px 8px 10px;
+        height: 32px;
+    }
+    .addButton {
+        width: 24px;
+        height: 24px;
+        font-size: 0.95em;
+    }
+}
